@@ -33,6 +33,11 @@ bin/
 # User data
 .2fa_secrets.json
 
+# Android / uni-app
+android/node_modules/
+android/unpackage/
+android/.hbuilderx/
+
 # IDE
 .vscode/
 .idea/
