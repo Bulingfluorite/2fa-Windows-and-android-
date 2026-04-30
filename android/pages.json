@@ -3,13 +3,13 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "TOTP验证码"
+				"navigationBarTitleText": "2FA验证器"
 			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "TOTP验证码",
+		"navigationBarTitleText": "2FA验证器",
 		"navigationBarBackgroundColor": "#F8F9FA",
 		"backgroundColor": "#F8F9FA"
 	},

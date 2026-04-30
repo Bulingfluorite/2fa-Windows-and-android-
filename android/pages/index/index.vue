@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="header">
-			<text class="header-title">TOTP验证码</text>
+			<text class="header-title">2FA验证器</text>
 		</view>
 
 		<view class="card">
@@ -37,9 +37,10 @@
 						<text>剩余 {{ countdown }} 秒</text>
 					</view>
 					<view class="offset-row">
-						<view class="offset-btn" @click="adjustOffset(-5)"><text class="offset-btn-text">-5s</text></view>
+						<view class="offset-btn" @click="adjustOffset(-offsetStep)"><text class="offset-btn-text">-{{ offsetStep }}s</text></view>
 						<text class="offset-label">偏移: {{ timeOffset }}s</text>
-						<view class="offset-btn" @click="adjustOffset(5)"><text class="offset-btn-text">+5s</text></view>
+						<view class="offset-btn" @click="adjustOffset(offsetStep)"><text class="offset-btn-text">+{{ offsetStep }}s</text></view>
+						<view class="offset-btn offset-btn-toggle" @click="toggleStep"><text class="offset-btn-text">{{ offsetStep === 0.5 ? '5s' : '0.5s' }}</text></view>
 					</view>
 				</view>
 			</view>
@@ -68,11 +69,13 @@
 				countdown: 30,
 				progressPercent: 100,
 				timeOffset: 0,
+				offsetStep: 0.5,
 				updateInterval: null
 			}
 		},
 		onLoad() {
 			this.timeOffset = uni.getStorageSync('timeOffset') || 0
+			this.offsetStep = uni.getStorageSync('offsetStep') || 0.5
 		},
 		onUnload() {
 			if (this.updateInterval) {
@@ -152,6 +155,11 @@
 				this.timeOffset += delta
 				uni.setStorageSync('timeOffset', this.timeOffset)
 				this.updateToken()
+			},
+
+			toggleStep() {
+				this.offsetStep = this.offsetStep === 0.5 ? 5 : 0.5
+				uni.setStorageSync('offsetStep', this.offsetStep)
 			}
 		}
 	}
@@ -315,7 +323,16 @@
 	.offset-label {
 		font-size: 24rpx;
 		color: #6c757d;
-		margin: 0 20rpx;
+		margin: 0 16rpx;
+	}
+
+	.offset-btn-toggle {
+		margin-left: 12rpx;
+		background-color: #4e54c8;
+	}
+
+	.offset-btn-toggle .offset-btn-text {
+		color: #ffffff;
 	}
 
 	.footer {
