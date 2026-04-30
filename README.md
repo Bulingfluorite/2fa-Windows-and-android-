@@ -25,8 +25,8 @@
 ## 📱 Android 客户端
 基于上述网页版的核心逻辑移植，采用 HBuilder uni-app 框架构建，适配安卓全系列机型。
 - 直接输入密钥，不支持保存
-- 实测存在约5秒的验证时间延迟，支持手动调整校准
+- 实测存在约5秒的验证时间延迟，支持手动调整校准，支持0.5和5秒微调切换。
 
-<img src="https://github.com/user-attachments/assets/c39e9a71-2fe9-417f-a10f-bf331d151c74" alt="安卓端界面" style="max-height: 500px; object-fit: contain">
+<img width="1200" height="2664" alt="03e167fb8877f077a5b2dc405988abc4" src="https://github.com/user-attachments/assets/cf433a47-38d1-4e75-be4f-b77995aa3f9a" />
 
 ---
